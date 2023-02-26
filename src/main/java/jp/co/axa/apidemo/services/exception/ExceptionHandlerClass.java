@@ -30,7 +30,7 @@ public class ExceptionHandlerClass {
 	 */
 	@ExceptionHandler(NoSuchElementException.class)
 	public Result ResNotExistHandler() {
-		return new Result<>(ErrorCodeEnum.RES_NOT_EXIST);
+		return new Result<>(ErrorCodeEnum.ID_NOT_EXIST);
 	}
 
 }

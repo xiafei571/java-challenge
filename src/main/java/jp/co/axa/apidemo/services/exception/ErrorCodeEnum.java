@@ -2,7 +2,7 @@ package jp.co.axa.apidemo.services.exception;
 
 public enum ErrorCodeEnum {
 
-	RES_NOT_EXIST(1001, "Resource ID does not exist."), 
+	ID_NOT_EXIST(1001, "ID does not exist."), 
 	DUPLICATION_RES(1002, "Resource already exists."),
 	SYSTEM_ERROR(9999, "System error.");
 

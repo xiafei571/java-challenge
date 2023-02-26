@@ -8,15 +8,54 @@ import org.springframework.data.domain.Page;
 
 public interface EmployeeService {
 
-    public List<Employee> retrieveEmployees();
-    
-    public Page<Employee> retrieveEmployees(Integer pageIndex, Integer pageSize);
+	/**
+	 * Returns a list containing only the Employee object. This method is not
+	 * recommended to be called directly due to the unknown amount of data.
+	 * 
+	 * @return a list containing only the Employee object.
+	 */
+	public List<Employee> retrieveEmployees();
 
-    public Employee getEmployee(Long employeeId);
+	/**
+	 * Returns a Page object including a list of the Employee object and the
+	 * pagination info.
+	 * 
+	 * @param pageIndex start from 1.
+	 * @param pageSize
+	 * @return a Page object including a list of the Employee object and the
+	 *         pagination info.
+	 */
+	public Page<Employee> retrieveEmployees(Integer pageIndex, Integer pageSize);
 
-    public void saveEmployee(Employee employee);
+	/**
+	 * Searches the Employee object using the employeeId. Returns null if the
+	 * employee does not exist.
+	 * 
+	 * @param employeeId the key to be searched for.
+	 * @return a Employee object or null if the employee does not exist.
+	 */
+	public Employee getEmployee(Long employeeId);
 
-    public void deleteEmployee(Long employeeId);
+	/**
+	 * Saves a new Employee object to the database.
+	 * 
+	 * @param employee
+	 * @return a saved Employee object
+	 */
+	public Employee saveEmployee(Employee employee);
 
-    public void updateEmployee(Employee employee);
+	/**
+	 * Deletes a Employee object from the database.
+	 * 
+	 * @param employeeId
+	 */
+	public void deleteEmployee(Long employeeId);
+
+	/**
+	 * Updates a Employee object to the database.
+	 * 
+	 * @param employeeId
+	 * @param employee
+	 */
+	public void updateEmployee(Long employeeId, Employee employee);
 }
