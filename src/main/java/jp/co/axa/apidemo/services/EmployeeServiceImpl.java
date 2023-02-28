@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employees;
 	}
 
-	public Page<Employee> retrieveEmployees(Integer pageIndex, Integer pageSize) {
+	public Page<Employee> getEmployeesByPage(Integer pageIndex, Integer pageSize) {
 		if (pageIndex == null || pageIndex < 1) {
 			pageIndex = Const.DEFAULT_PAGE_INDEX;
 		}
@@ -47,7 +47,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Cacheable(cacheNames = "emp", key = "#employeeId", unless = "#result == null")
-	public Employee getEmployee(Long employeeId) {
+	public Employee getEmployeeById(Long employeeId) {
 		Optional<Employee> optEmp = employeeRepository.findById(employeeId);
 		return optEmp.get();
 	}
@@ -69,10 +69,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@CacheEvict(cacheNames = "emp", key = "#employeeId")
-	public void updateEmployee(Long employeeId, Employee employee) {
+	public Employee updateEmployee(Long employeeId, Employee employee) {
 		if (employeeRepository.existsById(employeeId)) {
 			//TODO Normally ID is not allowed to be modified, we need to confirm employee.id == employeeId.
-			employeeRepository.save(employee);
+			return employeeRepository.save(employee);
 		} else {
 			throw new NoSuchElementException("The employeeId does not exist");
 		}

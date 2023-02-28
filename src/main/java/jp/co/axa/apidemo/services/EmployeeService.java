@@ -25,7 +25,7 @@ public interface EmployeeService {
 	 * @return a Page object including a list of the Employee object and the
 	 *         pagination info.
 	 */
-	public Page<Employee> retrieveEmployees(Integer pageIndex, Integer pageSize);
+	public Page<Employee> getEmployeesByPage(Integer pageIndex, Integer pageSize);
 
 	/**
 	 * Searches the Employee object using the employeeId. Returns null if the
@@ -34,7 +34,7 @@ public interface EmployeeService {
 	 * @param employeeId the key to be searched for.
 	 * @return a Employee object or null if the employee does not exist.
 	 */
-	public Employee getEmployee(Long employeeId);
+	public Employee getEmployeeById(Long employeeId);
 
 	/**
 	 * Saves a new Employee object to the database.
@@ -57,5 +57,5 @@ public interface EmployeeService {
 	 * @param employeeId
 	 * @param employee
 	 */
-	public void updateEmployee(Long employeeId, Employee employee);
+	public Employee updateEmployee(Long employeeId, Employee employee);
 }

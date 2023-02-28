@@ -23,14 +23,14 @@ public class EmployeeController {
 	@GetMapping("/employees")
 	public Page<Employee> getEmployees(@RequestParam(required = false) Integer pageIndex,
 			@RequestParam(required = false) Integer pageSize) {
-		Page<Employee> employees = employeeService.retrieveEmployees(pageIndex, pageSize);
+		Page<Employee> employees = employeeService.getEmployeesByPage(pageIndex, pageSize);
 		return employees;
 	}
 
 	@ApiOperation(value = "Get the employee info by ID")
 	@GetMapping("/employees/{employeeId}")
 	public Employee getEmployee(@PathVariable(name = "employeeId") Long employeeId) {
-		return employeeService.getEmployee(employeeId);
+		return employeeService.getEmployeeById(employeeId);
 	}
 
 	@ApiOperation(value = "Add a new employee info")

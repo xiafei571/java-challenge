@@ -36,4 +36,9 @@ public class Employee {
 	@Column(name = "DEPARTMENT")
 	private String department;
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", department=" + department + "]";
+	}
+	
 }
