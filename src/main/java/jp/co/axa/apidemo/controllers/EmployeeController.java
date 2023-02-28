@@ -50,9 +50,7 @@ public class EmployeeController {
 	@ApiOperation(value = "Update a employee info")
 	@PutMapping("/employees/{employeeId}")
 	public void updateEmployee(@RequestBody Employee employee, @PathVariable(name = "employeeId") Long employeeId) {
-
 		employeeService.updateEmployee(employeeId, employee);
-
 	}
 
 }

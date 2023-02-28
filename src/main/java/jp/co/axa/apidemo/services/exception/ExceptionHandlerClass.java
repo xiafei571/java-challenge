@@ -24,7 +24,8 @@ public class ExceptionHandlerClass {
 	}
 
 	/**
-	 * If a value is not present, return RES_NOT_EXIST status
+	 * When we searching the entity by Id, If a value is not present, return
+	 * RES_NOT_EXIST status
 	 * 
 	 * @return
 	 */

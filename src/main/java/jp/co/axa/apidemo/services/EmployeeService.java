@@ -20,8 +20,8 @@ public interface EmployeeService {
 	 * Returns a Page object including a list of the Employee object and the
 	 * pagination info.
 	 * 
-	 * @param pageIndex start from 1.
-	 * @param pageSize
+	 * @param pageIndex default 1 and start from 1.
+	 * @param pageSize  default 20
 	 * @return a Page object including a list of the Employee object and the
 	 *         pagination info.
 	 */
@@ -39,7 +39,7 @@ public interface EmployeeService {
 	/**
 	 * Saves a new Employee object to the database.
 	 * 
-	 * @param employee
+	 * @param employee object
 	 * @return a saved Employee object
 	 */
 	public Employee saveEmployee(Employee employee);
