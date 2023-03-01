@@ -1,6 +1,6 @@
 ### Experience in Java
-- I have more than 3 years experience in Java
-- I mainly use SpringMVC framework in my former jobs, and I started using Springboot during my masters.
+- I have more than 3 years experience in Java.
+- I mainly use SpringMVC framework in my former jobs, and I haven't used SpringBoot in my work yet, but I have used it in a research project during my master's program.
 
 ### What I've done
 - Made project working as expected
