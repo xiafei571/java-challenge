@@ -26,6 +26,21 @@
 - Added tests
     - Added tests for EmployeeService `[21]`
     - Checked if the cache is in effect by enabling database access logging.`[19]`
+    
+- Init datasets `[18]`
+
+EMPLOYEE
+| ID | EMPLOYEE_NAME | DEPARTMENT  | EMPLOYEE_SALARY |
+|----|---------------|-------------|-----------------|
+| 1  | Tom           | Engineering | 5001            |
+| 2  | Jerry         | Testing     | 4001            |
+
+USER
+| ID | USER_NAME | USER_PASSWORD | ACTIVE | ROLES | PERMISSIONS                 |
+|----|-----------|---------------|--------|-------|-----------------------------|
+| 1  | admin     | admin         | 1      | ADMIN | ACCESS_ADMIN1,ACCESS_ADMIN2 |
+| 2  | user      | user          | 1      | USER  | ACCESS_USER1,ACCESS_USER2   |
+
 
 ```
 + java-challenge
@@ -68,6 +83,13 @@
                 - ApiDemoApplicationTests.java [20]
                 - EmployeeServiceTest.java [21]
 ```
+
+### What can be improved If I had more time?
+- Logging system - ELK(ElasticSearch, Logstash, Kibana)
+- Considering scalability, use Redis or Memcache to replace the existing caching solution.
+- Some common methods like searching employees by name, we can use search engines like ElasticSearch.
+- Containerizing our SpringBoot application, so we can code and test locally while ensuring consistency between development and production.
+
 
 ### How to use this spring-boot project
 
