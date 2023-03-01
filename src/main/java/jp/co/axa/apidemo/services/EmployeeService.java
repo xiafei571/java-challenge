@@ -1,6 +1,7 @@
 package jp.co.axa.apidemo.services;
 
 import jp.co.axa.apidemo.entities.Employee;
+import jp.co.axa.apidemo.services.request.EmployeeRequest;
 
 import java.util.List;
 
@@ -39,10 +40,10 @@ public interface EmployeeService {
 	/**
 	 * Saves a new Employee object to the database.
 	 * 
-	 * @param employee object
+	 * @param EmployeeRequest object
 	 * @return a saved Employee object
 	 */
-	public Employee saveEmployee(Employee employee);
+	public Employee saveEmployee(EmployeeRequest employee);
 
 	/**
 	 * Deletes a Employee object from the database.
@@ -57,5 +58,5 @@ public interface EmployeeService {
 	 * @param employeeId
 	 * @param employee
 	 */
-	public Employee updateEmployee(Long employeeId, Employee employee);
+	public Employee updateEmployee(Long employeeId, EmployeeRequest employee);
 }

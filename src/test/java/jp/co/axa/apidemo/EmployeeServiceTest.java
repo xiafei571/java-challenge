@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.services.EmployeeService;
+import jp.co.axa.apidemo.services.request.EmployeeRequest;
 import jp.co.axa.apidemo.util.Const;
 
 @RunWith(SpringRunner.class)
@@ -23,15 +24,14 @@ public class EmployeeServiceTest {
 	@Autowired
 	private EmployeeService employeeService;
 
-	private Employee employee;
+	private EmployeeRequest employeeRequest;
 
 	@Before
 	public void setup() {
-		employee = new Employee();
-//		employee.setId(999L);
-		employee.setDepartment("Testing");
-		employee.setName("Test name");
-		employee.setSalary(9999);
+		employeeRequest = new EmployeeRequest();
+		employeeRequest.setDepartment("Testing");
+		employeeRequest.setName("Test name");
+		employeeRequest.setSalary(9999);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class EmployeeServiceTest {
 	@Test
 	public void whenSaveEmployee_thenReturnEmployeeObject() {
 		// when - action or the behaviour that we are going test
-		Employee savedEmployee = employeeService.saveEmployee(employee);
+		Employee savedEmployee = employeeService.saveEmployee(employeeRequest);
 
 		System.out.println(savedEmployee);
 		// then - verify the output
@@ -81,18 +81,18 @@ public class EmployeeServiceTest {
 	@Test
 	public void whenUpdateEmployee_thenReturnUpdatedEmployee() {
 		// save the object
-		Employee savedEmployee = employeeService.saveEmployee(employee);
+		Employee savedEmployee = employeeService.saveEmployee(employeeRequest);
 
 		String NEW_DEPARTMENT = "New Department";
 		String NEW_NAME = "New Name";
 		Integer NEW_SALARY = 10000;
 
-		savedEmployee.setDepartment(NEW_DEPARTMENT);
-		savedEmployee.setName(NEW_NAME);
-		savedEmployee.setSalary(NEW_SALARY);
+		employeeRequest.setDepartment(NEW_DEPARTMENT);
+		employeeRequest.setName(NEW_NAME);
+		employeeRequest.setSalary(NEW_SALARY);
 
 		// when - action or the behaviour that we are going test
-		Employee updatedEmployee = employeeService.updateEmployee(savedEmployee.getId(), savedEmployee);
+		Employee updatedEmployee = employeeService.updateEmployee(savedEmployee.getId(), employeeRequest);
 
 		// then - verify the output
 		assertThat(updatedEmployee.getDepartment()).isEqualTo(NEW_DEPARTMENT);
@@ -105,7 +105,7 @@ public class EmployeeServiceTest {
 	 */
 	@Test
 	public void whenDeleteEmployee_thenNothing() {
-		Employee savedEmployee = employeeService.saveEmployee(employee);
+		Employee savedEmployee = employeeService.saveEmployee(employeeRequest);
 		// when - action or the behaviour that we are going test
 		employeeService.deleteEmployee(savedEmployee.getId());
 		// then - verify the output

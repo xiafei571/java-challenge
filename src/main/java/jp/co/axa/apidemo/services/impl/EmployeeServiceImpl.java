@@ -3,6 +3,7 @@ package jp.co.axa.apidemo.services.impl;
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.repositories.EmployeeRepository;
 import jp.co.axa.apidemo.services.EmployeeService;
+import jp.co.axa.apidemo.services.request.EmployeeRequest;
 import jp.co.axa.apidemo.util.Const;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,8 +62,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * {@inheritDoc} The new object will be cached.
 	 */
 	@CachePut(cacheNames = "emp", key = "#result.id")
-	public Employee saveEmployee(Employee employee) {
-		Employee newEmployee = employeeRepository.save(employee);
+	public Employee saveEmployee(EmployeeRequest employeeRequest) {
+		Employee newEmployee = employeeRepository.save(new Employee(employeeRequest));
 		return newEmployee;
 	}
 
@@ -83,11 +84,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * {@inheritDoc} This method will invalidate the cache.
 	 */
 	@CacheEvict(cacheNames = "emp", key = "#employeeId")
-	public Employee updateEmployee(Long employeeId, Employee employee) {
+	public Employee updateEmployee(Long employeeId, EmployeeRequest employeeRequest) {
 		if (employeeRepository.existsById(employeeId)) {
-			// TODO Normally ID is not allowed to be modified, we need to confirm
-			// employee.id == employeeId.
-			return employeeRepository.save(employee);
+			Employee updatedEmployee = new Employee(employeeRequest);
+			updatedEmployee.setId(employeeId);
+			return employeeRepository.save(updatedEmployee);
 		} else {
 			throw new NoSuchElementException("The employeeId does not exist");
 		}
