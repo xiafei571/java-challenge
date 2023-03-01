@@ -39,14 +39,14 @@ public class EmployeeController {
 	@PostMapping("/employees")
 	public void saveEmployee(EmployeeRequest employee) {
 		employeeService.saveEmployee(employee);
-		System.out.println("Employee Saved Successfully");
+		//System.out.println("Employee Saved Successfully");
 	}
 
 	@ApiOperation(value = "Delete a employee info")
 	@DeleteMapping("/employees/{employeeId}")
 	public void deleteEmployee(@PathVariable(name = "employeeId") Long employeeId) {
 		employeeService.deleteEmployee(employeeId);
-		System.out.println("Employee Deleted Successfully");
+		//System.out.println("Employee Deleted Successfully");
 	}
 
 	@ApiOperation(value = "Update a employee info")
