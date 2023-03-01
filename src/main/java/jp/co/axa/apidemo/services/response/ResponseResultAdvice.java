@@ -8,13 +8,19 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
-//basePackages: swagger controller will not be transformed.
+/**
+ * All returns to the client should be wrapped in Result.class. 
+ * basePackages: swagger controller will not be transformed.
+ * 
+ * @author xiafei
+ *
+ */
 @ControllerAdvice(basePackages = "jp.co.axa.apidemo.controllers")
-public class ResponseResultAdvice implements ResponseBodyAdvice<Object>{
+public class ResponseResultAdvice implements ResponseBodyAdvice<Object> {
 
 	@Override
 	public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-		
+
 		return true;
 	}
 
@@ -22,13 +28,12 @@ public class ResponseResultAdvice implements ResponseBodyAdvice<Object>{
 	public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
 			Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
 			ServerHttpResponse response) {
-		
 
-		if(body == null) {
+		if (body == null) {
 			return new Result<>();
 		}
-		
-        return new Result<>(body);
+
+		return new Result<>(body);
 	}
 
 }
